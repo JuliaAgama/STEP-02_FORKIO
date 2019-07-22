@@ -57,3 +57,7 @@ body {
 .header p {
   background-color: #000;
   color: #fff000; }
+
+.overview-section p {
+  background-color: #00ff00;
+  color: #000fff; }
