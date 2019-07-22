@@ -1,0 +1,22 @@
+{
+  "name": "step_02",
+  "version": "1.0.0",
+  "description": "Step 02. Forkio",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuliaAgama/STEP_02_FORKIO.git"
+  },
+  "keywords": [
+    "forkio"
+  ],
+  "author": "Julia Verchyonova",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuliaAgama/STEP_02_FORKIO/issues"
+  },
+  "homepage": "https://github.com/JuliaAgama/STEP_02_FORKIO#readme"
+}
