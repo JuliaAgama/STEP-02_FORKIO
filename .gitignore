@@ -6,4 +6,6 @@
 *.psd
 *.gif
 *.zip
+*.idea
+*.DS_Storegit
 _brief/
