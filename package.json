@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/JuliaAgama/STEP_02_FORKIO/issues"
   },
-  "homepage": "https://github.com/JuliaAgama/STEP_02_FORKIO#readme"
+  "homepage": "https://github.com/JuliaAgama/STEP_02_FORKIO#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
 }
