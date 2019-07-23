@@ -6,6 +6,7 @@ const   browserSync = require('browser-sync');
 const   concat = require('gulp-concat');
 const   uglify = require('gulp-uglify');
 const   cleanCss = require('gulp-clean-css');
+const   rename = require('gulp-rename');
 
 /*********** BROWSER SYNC **********/
 
@@ -22,21 +23,15 @@ gulp.task('browser-sync', function() {
 
 gulp.task('styles', function() {
     return gulp.src('src/scss/style.scss')
+    .pipe(browserSync.reload({stream: true}))
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('src/scss/'))
-    .pipe(browserSync.reload({stream: true}));
-    });
-
-gulp.task('clean-css', function() {
-    return gulp.src('src/scss/style.css')
-        // .pipe(concat('style.min.css'))
         .pipe(cleanCss())
+        .pipe(rename({
+            suffix: '.min'
+        }))
         .pipe(gulp.dest('dist/css/'))
-});
-
-gulp.task('styles-processing', gulp.series('styles', 'clean-css'));
-
-
+    });
 
 /*********** SCRIPTS PROCESSING **********/
 
@@ -45,12 +40,8 @@ gulp.task('scripts', function() {
         .pipe(browserSync.reload({ stream: true }))
         .pipe(concat('index.js'))
         .pipe(gulp.dest('src/js/'))
-});
-
-gulp.task('uglify-scripts', function() {
-    return gulp.src('src/js/index.js')
-        .pipe(concat('script.min.js'))
         .pipe(uglify())
+        .pipe(rename('script.min.js'))
         .pipe(gulp.dest('dist/js/'))
 });
 
@@ -61,9 +52,6 @@ gulp.task('script-libs', function() {
         .pipe(uglify())
         .pipe(gulp.dest('dist/js/'))
 });
-
-gulp.task('scripts-processing', gulp.series('scripts', 'uglify-scripts', 'script-libs'));
-
 
 /*********** HTML PROCESSING **********/
 
@@ -77,8 +65,8 @@ gulp.task('html', function() {
 
 gulp.task('watch', function() {
     // gulp.watch('./*.html', gulp.parallel('html'));
-    gulp.watch('src/scss/**/*.scss', gulp.parallel('styles-processing'));
-    gulp.watch('src/js/**/*.js', gulp.parallel('scripts-processing'));
+    gulp.watch('src/scss/**/*.scss', gulp.parallel('styles'));
+    gulp.watch('src/js/**/*.js', gulp.series('scripts', 'script-libs'));
 });
 
 

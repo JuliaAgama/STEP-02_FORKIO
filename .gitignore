@@ -9,3 +9,5 @@
 *.idea
 *.DS_Storegit
 _brief/
+.DS_Store
+.idea
