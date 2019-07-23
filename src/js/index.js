@@ -5,7 +5,7 @@
 ;
 /********** OVERVIEW SECTION **********/
 
-
+$('.overview-section').hide();
 ;
 /********** PRICING SECTION **********/
 

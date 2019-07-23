@@ -61,4 +61,6 @@ body {
 .overview-section p {
   background-color: #00ff00;
   color: red;
-  font-size: 42px; }
+  font-size: 12px;
+  -ms-flex-line-pack: center;
+  align-content: center; }
