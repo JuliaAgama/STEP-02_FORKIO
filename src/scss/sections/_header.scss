@@ -1,8 +1,23 @@
 ;// _header.scss
 
-.header {
-    p {
-        background-color: #000;
-        color: #fff000;
+// upto 320px width (including)
+
+.top-header {
+    background-color: #27262a;
+    color: $brand-color;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    .header-logo-box {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+
+        
+
+
     }
+
 }
