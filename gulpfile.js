@@ -58,12 +58,6 @@ gulp.task('script-libs', function () {
         .pipe(gulp.dest('dist/js/'))
 });
 
-/*********** HTML PROCESSING **********/
-
-gulp.task('html', function () {
-    return gulp.src('./*.html')
-        .pipe(browserSync.reload({stream: true}))
-});
 
 /*********** Minify Images **********/
 
@@ -89,6 +83,7 @@ gulp.task('browser-sync', function () {
 gulp.task('watch', function () {
     gulp.watch('src/scss/**/*.scss', gulp.parallel('styles'));
     gulp.watch('src/js/**/*.js', gulp.parallel('scripts', 'script-libs'));
+    gulp.watch('./*.html', browserSync.reload);
 });
 
 
