@@ -10,6 +10,8 @@
 // upto 320px width (including)
 
 .top-header {
+    width: 100%;
+    position: relative;
     background-color: #27262a;
     color: $brand-color;
     display: flex;
@@ -19,23 +21,45 @@
     padding: 30px 15px;
 
     .header-logo-box {
+        cursor: pointer;
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
-
         &__img {
             width: 43px;
             height: 41px;
-
             &--hover {
                 display: none;
             }
         }
-
         &__name {
             font-size: 24px;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-family: 'Lato', 'Courier', sans-serif;
             display: none;
+            @media only screen and (min-width: 481px) {
+                display: block;
+            }
+        }
+        &:hover .header-logo-box {
+            &__img {
+                display: none;
+                &--hover {
+                    display: block;
+                }
+            }
+            &__name {
+                color: #fff;
+            }
         }
     }
+
+    .header-menu {
+        // position: absolute;
+        display: flex;
+    }
+
+
 
 }
