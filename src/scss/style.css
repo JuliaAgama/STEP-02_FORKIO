@@ -65,12 +65,19 @@ table {
 /*Adobe fonts:*/
 /* font-family: myriad-pro,sans-serif; */
 /* font-family: courier-std,monospace; */
-body {
+.content-wrapper {
   font-family: 'Montserrat', Courier, sans-serif;
+  min-width: 320px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 /* common variables functions & mixins: */
 .top-header {
+  width: 100%;
+  position: relative;
   background-color: #27262a;
   color: #8d81ac;
   display: -webkit-box;
@@ -90,6 +97,7 @@ body {
 }
 
 .top-header .header-logo-box {
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -113,7 +121,34 @@ body {
 
 .top-header .header-logo-box__name {
   font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'Lato', 'Courier', sans-serif;
   display: none;
+}
+
+@media only screen and (min-width: 481px) {
+  .top-header .header-logo-box__name {
+    display: block;
+  }
+}
+
+.top-header .header-logo-box:hover .header-logo-box__img {
+  display: none;
+}
+
+.top-header .header-logo-box:hover .header-logo-box__img--hover {
+  display: block;
+}
+
+.top-header .header-logo-box:hover .header-logo-box__name {
+  color: #fff;
+}
+
+.top-header .header-menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .overview-section p {
