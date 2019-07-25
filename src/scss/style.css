@@ -22,37 +22,46 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+}
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block; }
+  display: block;
+}
 
 body {
-  line-height: 1; }
+  line-height: 1;
+}
 
 a {
   text-decoration: none;
-  color: inherit; }
+  color: inherit;
+}
 
 ol, ul {
-  list-style: none; }
+  list-style: none;
+}
 
 blockquote, q {
-  quotes: none; }
+  quotes: none;
+}
 
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: '';
-  content: none; }
+  content: none;
+}
 
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+}
 
 body {
-  font-family: 'Montserrat', Courier, sans-serif; }
+  font-family: 'Montserrat', Courier, sans-serif;
+}
 
 .top-header {
   background-color: #27262a;
@@ -69,22 +78,26 @@ body {
   justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center; }
-  .top-header .header-logo-box {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -ms-flex-flow: row nowrap;
-    flex-flow: row nowrap;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center; }
+  align-items: center;
+}
+
+.top-header .header-logo-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-flow: row nowrap;
+  flex-flow: row nowrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
 
 .overview-section p {
   background-color: #00ff00;
   color: red;
   font-size: 12px;
   -ms-flex-line-pack: center;
-  align-content: center; }
+  align-content: center;
+}

@@ -25,7 +25,7 @@ gulp.task('clean', function () {
 gulp.task('styles', function () {
     return gulp.src('src/scss/style.scss')
         .pipe(browserSync.reload({stream: true}))
-        .pipe(sass(outputStyle: 'expanded').on('error', sass.logError))
+        .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(autoprefixer({
             overrideBrowserslist: ['last 5 versions'],
             cascade: false
