@@ -1,5 +1,12 @@
 ;// _header.scss
 
+// $brand-color: #8d81ac;
+// @function size-vw($px, $base-width) {
+//     @return $px/$base-width*100vw
+// }
+
+
+
 // upto 320px width (including)
 
 .top-header {
@@ -7,17 +14,28 @@
     color: $brand-color;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 30px 15px;
 
     .header-logo-box {
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
 
-        
+        &__img {
+            width: 43px;
+            height: 41px;
 
+            &--hover {
+                display: none;
+            }
+        }
 
+        &__name {
+            font-size: 24px;
+            display: none;
+        }
     }
 
 }
