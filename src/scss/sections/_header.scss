@@ -56,10 +56,14 @@
     }
 
     .header-menu {
-        // position: absolute;
+        position: absolute;
         display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-content: flex-start;
     }
 
+   
 
 
 }

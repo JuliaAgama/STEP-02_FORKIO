@@ -1,16 +1,18 @@
 ;// _base.scss
 
+/********** BASIC STYLES **********/
+
 /* Google fonts:*/
 
- /*font-family: 'Montserrat', sans-serif;*/
- /*font-family: 'Lato', sans-serif;*/
+ //font-family: 'Montserrat', sans-serif;
+ //font-family: 'Lato', sans-serif;
 @import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700|Montserrat:400,400i,700&display=swap&subset=cyrillic,cyrillic-ext,latin-ext');
 
 
 /*Adobe fonts:*/
 
-/* font-family: myriad-pro,sans-serif; */
-/* font-family: courier-std,monospace; */
+// font-family: myriad-pro,sans-serif;
+// font-family: courier-std,monospace;
 @import url("https://use.typekit.net/hte0isi.css");
 
 
@@ -25,7 +27,7 @@
     }
 }
 
-/* common variables functions & mixins: */
+// common variables, functions & mixins:
 
 $brand-color: #8d81ac;
 
