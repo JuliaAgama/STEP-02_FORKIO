@@ -5,7 +5,7 @@
 //     @return $px/$base-width*100vw
 // }
 
-@mixin branded-button($Wpx, $Hpx) { //define common style mixin for branded buttons
+@mixin branded-button($Wpx, $Hpx) { //define common style mixin for branded buttons (width, height)
     cursor: pointer;
     width: $Wpx;
     height: $Hpx;
@@ -18,27 +18,35 @@
     align-items: center;
     color: #fff;
     text-transform: capitalize;
-    font-family: 'Montserrat', Courier, sans-serif;
+    font-family: 'Montserrat', 'courier-std', sans-serif;
+    font-weight: 700;
 }
 
-// mobile-first: for 320px+ width
+// mobile-first: for 320px width
 
 .header {
+    margin-bottom: 100px;
     width: 100%;
     position: relative;
     background: url('/dist/img/background-header.png') no-repeat;
-    background-size: size-vw(1300px, 320px) auto;
     background-position: top center;
-    margin-bottom: 50px;
+    background-size: 1200px auto;
+
+    @media only screen and (min-width: 321px) {
+        background-size: size-vw(1200px, 320px) auto;
+    }
     @media only screen and (min-width: 481px) {
         background-size: size-vw(1400px, 768px) auto;
     }
     @media only screen and (min-width: 993px) {
-        background-size: size-vw(1300px, 1200px) auto;
+        background-size: size-vw(1400px, 1200px) auto;
+    }
+    @media only screen and (min-width: 1201px) {
+        background-size: 1400px auto;
     }
 }
 
-.top-header {
+.top-bar {
     width: 100%;
     box-sizing: border-box;
     position: relative;
@@ -50,250 +58,390 @@
     justify-content: space-between;
     align-items: center;
     padding: 30px 15px;
+
+    @media only screen and (min-width: 321px) {
+        padding: size-vw(30px, 320px)  size-vw(15px, 320px);
+    }
     @media only screen and (min-width: 481px) {
-        padding: 22px 20px 55px;
+        padding: size-vw(22px, 768px) size-vw(20px, 768px) size-vw(55px, 768px);
     }
     @media only screen and (min-width: 993px) {
+        padding: size-vw(30px, 1200px) size-vw(90px, 1200px);
+    }
+    @media only screen and (min-width: 1201px) {
         padding: 30px 90px;
     }
+}
 
-    .header-logo-box {
-        cursor: pointer;
-        display: flex;
-        flex-flow: row nowrap;
-        align-items: center;
-        &__img {
+.top-logo {
+    cursor: pointer;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    &__img {
+        width: 43px;
+        height: 41px;
+
+        @media only screen and (min-width: 321px) {
+            width: size-vw(43px, 320px);
+            height: size-vw(41px, 320px);
+        }
+        @media only screen and (min-width: 481px) {
+            width: size-vw(43px, 768px);
+            height: size-vw(41px, 768px);
+        }
+        @media only screen and (min-width: 993px) {
+            width: size-vw(43px, 1200px);
+            height: size-vw(41px, 1200px);
+        }
+        @media only screen and (min-width: 1201px) {
             width: 43px;
             height: 41px;
-            &--hover {
-                display: none;
-            }
         }
-        &__name {
-            font-size: 24px;
-            text-transform: uppercase;
-            font-weight: 700;
-            font-family: 'Lato', 'Courier', sans-serif;
+        &--hover {
             display: none;
+        }
+    }
+    &__name {
+        text-transform: uppercase;
+        font-weight: 700;
+        font-family: 'Lato', 'courier-std', sans-serif;
+        display: none;
+        font-size: 24px;
+        margin-left: 17px;
+
+        @media only screen and (min-width: 321px) {
+            font-size: size-vw(24px, 320px);
+            margin-left: size-vw(17px, 320px);
+        }
+        @media only screen and (min-width: 481px) {
+            display: block;
+            font-size: size-vw(24px, 768px);
+            margin-left: size-vw(17px, 768px);
+        }
+        @media only screen and (min-width: 993px) {
+            font-size: size-vw(24px, 1200px);
+            margin-left: size-vw(17px, 1200px);
+        }
+        @media only screen and (min-width: 1201px) {
+            font-size: 24px;
             margin-left: 17px;
-            @media only screen and (min-width: 481px) {
+        }
+    }
+
+    &:hover .top-logo {
+        &__img {
+            display: none;
+            &--hover {
                 display: block;
             }
         }
-        &:hover .header-logo-box {
-            &__img {
-                display: none;
-                &--hover {
-                    display: block;
-                }
-            }
-            &__name {
-                color: #fff;
-            }
-        }
-    }
-
-    .header-menu {
-        position: absolute;
-        width: 290px;
-        left: 50%;
-        top: 100%;
-        transform: translateX(-50%);
-        background-color: #333;
-        font-size: 19px;
-        color: #fff;
-        font-weight: 400;
-        text-transform: capitalize;
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        align-items: flex-start;
-        @media only screen and (min-width: 481px) {
-            width: 100%;
-            left: 0;
-            transform: translate(0, -16px-22px);
-            background-color: transparent;
-            border: none;
-            flex-flow: row nowrap;
-            font-size: 16px;
-            color: $brand-color;
-        }
-        @media only screen and (min-width: 481px) and (max-width: 600px) {
-            font-size: size-vw(16px, 600px);
-        }
-        @media only screen and (min-width: 993px) {
-            position: static;
-            width: 70%;
-            transform: translate(0);
-            align-items: center;
-            justify-content: flex-end;
-        }
-        &--hidden {
-            @media only screen and (max-width: 480px) {
-                display: none;
-            }
-        }
-
-        &__item {
-            padding: {
-                top: 22px;
-                left: 32px;
-                bottom: 25px;
-            }
-            border-bottom: 1px solid #666;
-            margin-bottom: 10px;
-            position: relative;
-            @media only screen and (min-width: 481px) {
-                // padding: 0 24px;
-                padding: 0 size-vw(24px, 768px);
-                border: none;
-                font-weight: 700;
-                margin-bottom: 0;
-                &:hover {
-                    color: #fff;
-                }
-            }
-            @media only screen and (min-width: 993px) {
-                padding: 0 24px;
-            }
-            &:first-child {
-                padding-top: 31px;
-                color: $brand-color;
-                @media only screen and (min-width: 481px) {
-                    padding-top: 0;
-                    &:hover {
-                        color: #fff;
-                    }
-                }
-                &::before {
-                    content: '';
-                    position: absolute;
-                    left: 0;
-                    top: 50%;
-                    height: 60%;
-                    transform: translateY(-50%);
-                    border: {
-                        left: 8px solid $brand-color;
-                    }
-                    @media only screen and (min-width: 481px) {
-                        border: none;
-                    }
-                }
-            }
-
-        }
-    }
-
-    .header-button {
-        @include branded-button(119px, 37px);
-        font-size: 15px;
-        &:hover {
-            background-color: #fff;
-            color: $brand-color;
-        }
-        @media only screen and (min-width: 481px) {
-            @include branded-button(145px, 38px);
-            font-size: 16px;
-        }
-    }
-
-    .header-menu-button {
-        display: block;
-        box-sizing: border-box;
-        border: none;
-        width: 26px;
-        height: 21px;
-        @media only screen and (min-width: 481px) {
-            display: none;
-        }
-        &__img {
-            object-fit: cover;
+        &__name {
+            color: #fff;
         }
     }
 }
 
-.title-page {
-    padding: size-vw(40px, 320px) 0 size-vw(424px, 320px);
-    text-align: center;
-    font-family: 'Montserrat', Courier, sans-serif;
-    text-transform: capitalize;
+.top-menu {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    background-color: #333;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: stretch;
+    width: 290px;
+
+    @media only screen and (min-width: 321px) {
+        width: size-vw(290px, 320px)
+    }
     @media only screen and (min-width: 481px) {
-        padding: size-vw(40px, 768px) 0 size-vw(424px, 768px);
+        width: 100%;
+        left: 0;
+        transform: translate(0, size-vw(-38px, 768px));
+        background-color: transparent;
+        border: none;
+        flex-flow: row nowrap;
+        color: $brand-color;
     }
     @media only screen and (min-width: 993px) {
-        padding: size-vw(60px, 1200px) 0 size-vw(424px, 1200px);
+        position: static;
+        width: 70%;
+        transform: translate(0);
+        align-items: center;
+        justify-content: flex-end;
     }
-    
-    &__main-title {
-        color: #fff;
-        // font-size: 35px;
-        font-size: size-vw(39px, 320px);
-        font-weight: 700;
-        padding-bottom: 15px;
-        @media only screen and (min-width: 481px) {
-            font-size: size-vw(53px, 768px);
-        }
-        @media only screen and (min-width: 993px) {
-            font-size: size-vw(60px, 1200px);
-        }
-    }
-    
-    &__sub-title {
-        color: $brand-color;
-        // font-size: 13px;
-        font-size: size-vw(16px, 320px);
-        line-height: 2;
-        margin: 0;
-        @media only screen and (min-width: 481px) {
-            font-size: size-vw(18px, 768px);
-        }
-        @media only screen and (min-width: 993px) {
-            font-size: size-vw(22px, 1200px);
+    &--hidden {
+        @media only screen and (max-width: 480px) {
+            display: none;
         }
     }
 
-    &__subsub-title {
-        color: #848E97;
-        // font-size: 10px;
-        font-size: size-vw(12px, 320px);
-        text-transform: uppercase;
-        margin-top: 10px;
+    &__item {
+        border-bottom: 1px solid #666;
+        font-weight: 400;
+        text-transform: capitalize;
+        color: #fff;
+        position: relative;
+        padding: {
+            top: 22px;
+            left: 32px;
+            bottom: 25px;
+        }
+        margin-bottom: 10px;
+        font-size: 19px;
+
+        @media only screen and (min-width: 321px) {
+            padding: {
+                top: size-vw(22px, 320px);
+                left: size-vw(32px, 320px);
+                bottom: size-vw(25px, 320px);
+            }
+            margin-bottom: size-vw(10px, 320px);
+            font-size: size-vw(19px, 320px);
+        }
         @media only screen and (min-width: 481px) {
-            font-size: size-vw(13px, 768px);
+            font-weight: 700;
+            border: none;
+            color: $brand-color;
+            margin-bottom: 0;
+            padding: 0 size-vw(24px, 768px);
+            font-size: size-vw(16px, 768px);
+            &:hover {
+                color: #fff;
+            }
+        }
+        @media only screen and (min-width: 993px) {
+            padding: 0 size-vw(24px, 1200px);
+            font-size: size-vw(16px, 1200px);
+        }
+        @media only screen and (min-width: 1201px) {
+            padding: 0 24px;
+            font-size: 16px;
+        }
+        &:first-child {
+            color: $brand-color;
+            padding-top: 31px;
+
+            @media only screen and (min-width: 321px) {
+                padding-top: size-vw(31px, 320px);
+            }
+            @media only screen and (min-width: 481px) {
+                padding-top: 0;
+                &:hover {
+                    color: #fff;
+                }
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                height: 60%;
+                transform: translateY(-50%);
+                border-left: 8px solid $brand-color;
+
+                @media only screen and (min-width: 321px) {
+                    border-left-width: size-vw(8px, 320px);
+                }
+                @media only screen and (min-width: 481px) {
+                    border: none;
+                }
+            }
+        }
+    }
+}
+
+.top-button {
+    @include branded-button(119px, 37px);
+    font-size: 15px;
+
+    @media only screen and (min-width: 321px) {
+        @include branded-button(size-vw(119px, 320px), size-vw(37px, 320px));
+        font-size: size-vw(15px, 320px);
+    }
+    @media only screen and (min-width: 481px) {
+        @include branded-button(size-vw(145px, 768px), size-vw(38px, 768px));
+        font-size: size-vw(16px, 768px);
+    }
+    @media only screen and (min-width: 993px) {
+        @include branded-button(size-vw(145px, 1200px), size-vw(38px, 1200px));
+        font-size: size-vw(16px, 1200px);
+    }
+    @media only screen and (min-width: 1201px) {
+        @include branded-button(145px, 38px);
+        font-size: 16px;
+    }
+
+    &:hover {
+        background-color: #fff;
+        color: $brand-color;
+    }
+}
+
+.top-menu-button {
+    display: block;
+    box-sizing: border-box;
+    border: none;
+    width: 26px;
+    height: 21px;
+
+    @media only screen and (min-width: 321px) {
+        width: size-vw(26px, 320px);
+        height: size-vw(21px, 320px);
+    }
+    @media only screen and (min-width: 481px) {
+        display: none;
+    }
+    &__img {
+        width: 100%;
+    }
+}
+
+.title-page {
+    text-align: center;
+    font-family: 'Montserrat', 'courier-std', sans-serif;
+    text-transform: capitalize;
+    padding: 43px 0 350px; //by brief padding-bottom: 424px
+    
+    @media only screen and (min-width: 321px) {
+        padding: size-vw(43px, 320px) 0 size-vw(350px, 320px);
+    }
+    @media only screen and (min-width: 481px) {
+        padding: size-vw(50px, 768px) 0 size-vw(487px, 768px);
+    }
+    @media only screen and (min-width: 993px) {
+        padding: size-vw(60px, 1200px) 0 size-vw(487px, 1200px);
+    }
+    @media only screen and (min-width: 1201px) {
+        padding: 60px 0 487px;
+    }
+    
+    &__title {
+        color: #fff;
+        font-weight: 700;
+        font-size: 38px; //35 px by brief
+        padding-bottom: 15px;
+
+        @media only screen and (min-width: 321px) {
+            font-size: size-vw(38px, 320px);
+            padding-bottom: size-vw(15px, 320px);
+        }
+        @media only screen and (min-width: 481px) {
+            font-size: size-vw(68px, 768px); // by brief 53px
+            padding-bottom: size-vw(10px, 768px);
+        }
+        @media only screen and (min-width: 993px) {
+            font-size: size-vw(78px, 1200px);
+            padding-bottom: size-vw(6px, 1200px);
+        }
+        @media only screen and (min-width: 1201px) {
+            font-size: 78px; // by brief 60px
+            padding-bottom: 6px;
+        }
+    }
+
+    &__subtitle {
+        color: $brand-color;
+        font-family: 'Lato', 'courier-std', sans-serif;
+        line-height: 2;
+        margin: 0;
+        font-size: 16px; //by brief 13px
+
+        @media only screen and (min-width: 321px) {
+            font-size: size-vw(16px, 320px);
+        }
+        @media only screen and (min-width: 481px) {
+            text-transform: none;
+            font-size: size-vw(22px, 768px); //by brief 18px
+        }
+        @media only screen and (min-width: 993px) {
+            font-size: size-vw(30px, 1200px);
+        }
+        @media only screen and (min-width: 1201px) {
+            font-size: 30px; //by brief 22px
+        }
+    }
+
+    &__subsub {
+        color: #848E97;
+        text-transform: uppercase;
+        font-size: 12px; //by brief 10px
+        margin-top: 14px;
+
+        @media only screen and (min-width: 321px) {
+            font-size: size-vw(12px, 320px);
+            margin-top: size-vw(14px, 320px)
+        }
+        @media only screen and (min-width: 481px) {
+            font-size: size-vw(14px, 768px); //by brief 10px
+            margin-top: size-vw(8px, 768px)
         }
         @media only screen and (min-width: 993px) {
             font-size: size-vw(14px, 1200px);
+            margin-top: size-vw(6px, 1200px)
+        }
+        @media only screen and (min-width: 1201px) {
+            font-size: 14px; //by brief 12px
+            margin-top: 6px;
         }
     }
+}
 
-    .title-button-box {
+.title-button {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -50%);
+    @include branded-button(290px, 45px);
+    font-size: 13px;
+
+    @media only screen and (min-width: 321px) {
+        @include branded-button(size-vw(290px, 320px), size-vw(45px,320px));
+        font-size: size-vw(13px, 320px);
+    }
+    @media only screen and (min-width: 481px) {
+        @include branded-button(size-vw(390px, 768px), size-vw(62px,768px));
+        font-size: size-vw(16px, 768px);
+    }
+    @media only screen and (min-width: 993px) {
+        @include branded-button(size-vw(390px, 1200px), size-vw(62px,1200px));
+        font-size: size-vw(20px, 1200px);
+    }
+    @media only screen and (min-width: 1201px) {
+        @include branded-button(390px, 62px);
+        font-size: 20px; //16px by brief
+    }
+
+    &:hover {
+        background-color: #fff;
+        color: $brand-color;
+    }
+    &::after {
+        content: 'Unlimited 30-Days Trial Period';
         position: absolute;
-        left: 50%;
-        top: 100%;
-        transform: translate(-50%, -30%);
+        color: #999;
+        font-weight: 400;
+        font-size: 14px;
+        transform: translateY(40px);
 
-        .title-button {
-            @include branded-button(290px, 45px);
-            font-size: 17px;
-            font-weight: 700;
-            margin-bottom: 12px;
-            @media only screen and (min-width: 481px) {
-                @include branded-button(390px, 62px);
-                font-size: 19px;
-                margin-bottom: 14px;
-            }
-            
-            &:hover {
-                background-color: #fff;
-                color: $brand-color;
-            }
+        @media only screen and (min-width: 321px) {
+            font-size: size-vw(14px, 320px);
+            transform: translateY(size-vw(40px, 320px));
         }
-        &__caption {
-            font-size: 14px;
-            color: #999;
-            @media only screen and (min-width: 481px) {
-                font-size: 16px;
-            }
+        @media only screen and (min-width: 481px) {
+            font-size: size-vw(14px, 768px);
+            transform: translateY(size-vw(50px, 768px));
+        }
+        @media only screen and (min-width: 993px) {
+            font-size: size-vw(15px, 1200px);
+            transform: translateY(size-vw(50px, 1200px));
+        }
+        @media only screen and (min-width: 1201px) {
+            font-size: 15px; //14px by brief
+            transform: translateY(50px);
         }
     }
 }
