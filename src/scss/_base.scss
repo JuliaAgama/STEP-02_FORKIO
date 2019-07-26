@@ -15,12 +15,48 @@
 // font-family: courier-std,monospace;
 @import url("https://use.typekit.net/hte0isi.css");
 
+// common variables, functions & mixins:
+
+$brand-color: #8d81ac;
+
+@function size-vw($px, $base-width) {
+    @return $px/$base-width*100vw;
+}
+
+
+/********** MEDIA QUERIES **********/
+
+// mobile first: basic styles for width: <=320px
+//fixed dimensions (px, pt)
+
+@media only screen and (min-width: 321px) {
+    //relative dimensions (% or vw)
+    // can be calculated from function size-vw($px, $base-width)
+}
+
+@media only screen and (min-width: 481px) {
+    //relative dimensions (% or vw)
+    // can be calculated from function size-vw($px, $base-width)
+}
+
+@media only screen and (min-width: 993px) {
+    //relative dimensions (% or vw)
+    // can be calculated from function size-vw($px, $base-width)
+}
+
+@media only screen and (min-width: 1201px) {
+    //fixed dimensions (px, pt)
+}
+
+
+/********** BASIC STYLES **********/
+
 body {
     width: calc(100vw - (100vw - 100%));
 }
 
 .content-wrapper {
-    font-family: 'Montserrat', Courier, sans-serif;
+    font-family: 'Montserrat', 'courier-std', sans-serif;
     width: 320px;
     margin: 0 auto;
     padding: {
@@ -34,11 +70,31 @@ body {
     }
 }
 
-// common variables, functions & mixins:
+.section-title {
+    color: #fff;
+    font-family: 'Montserrat', 'courier-std', sans-serif;
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 24px; //by brief 26px / 20px
+    margin: 60px auto 50px;
 
-$brand-color: #8d81ac;
+    @media only screen and (min-width: 321px) {
+        font-size: size-vw(24px, 320px);
+        margin: size-vw(60px, 320px) auto size-vw(50px, 320px);
+    }
 
-@function size-vw($px, $base-width) {
-    @return $px/$base-width*100vw
+    @media only screen and (min-width: 481px) {
+        font-size: size-vw(31px, 768px); // by brief 31px
+        margin: size-vw(80px, 768px) auto size-vw(50px, 768px);
+    }
+
+    @media only screen and (min-width: 993px) {
+        font-size: size-vw(35px, 1200px); // by brief 35px
+        margin: size-vw(100px, 1200px) auto;
+    }
+
+    @media only screen and (min-width: 1201px) {
+        font-size: 35px; //by brief 35px
+        margin: 100px auto;
+    }
 }
-
