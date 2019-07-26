@@ -2,7 +2,7 @@
 /********** HEADER **********/
 
 
-$('.header-menu-button').on('click', function() {
-    $('.header-menu').toggleClass('header-menu--hidden');
+$('.top-menu-button').on('click', function() {
+    $('.top-menu').toggleClass('top-menu--hidden');
 })
 

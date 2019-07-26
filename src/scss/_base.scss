@@ -15,15 +15,22 @@
 // font-family: courier-std,monospace;
 @import url("https://use.typekit.net/hte0isi.css");
 
+body {
+    width: calc(100vw - (100vw - 100%));
+}
 
 .content-wrapper {
     font-family: 'Montserrat', Courier, sans-serif;
-    min-width: 320px;
-    max-width: 1200px;
+    width: 320px;
     margin: 0 auto;
     padding: {
         left: 10px;
         right: 10px;
+    }
+    @media only screen and (min-width: 321px) {
+        width: 100%;
+        min-width: 320px;
+        max-width: 1200px;
     }
 }
 
