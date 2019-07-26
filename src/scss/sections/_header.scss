@@ -1,10 +1,5 @@
 ;// _header.scss
 
-// $brand-color: #8d81ac;
-// @function size-vw($px, $base-width) {
-//     @return $px/$base-width*100vw
-// }
-
 @mixin branded-button($Wpx, $Hpx) { //define common style mixin for branded buttons (width, height)
     cursor: pointer;
     width: $Wpx;
@@ -305,7 +300,7 @@
     font-family: 'Montserrat', 'courier-std', sans-serif;
     text-transform: capitalize;
     padding: 43px 0 350px; //by brief padding-bottom: 424px
-    
+
     @media only screen and (min-width: 321px) {
         padding: size-vw(43px, 320px) 0 size-vw(350px, 320px);
     }
@@ -318,7 +313,7 @@
     @media only screen and (min-width: 1201px) {
         padding: 60px 0 487px;
     }
-    
+
     &__title {
         color: #fff;
         font-weight: 700;
