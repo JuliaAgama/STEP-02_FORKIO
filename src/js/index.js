@@ -10,7 +10,7 @@ $('.top-menu-button').on('click', function() {
 ;
 /********** OVERVIEW SECTION **********/
 
-$('.overview-section').hide();
+
 ;
 /********** PRICING SECTION **********/
 
