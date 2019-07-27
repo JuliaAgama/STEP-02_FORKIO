@@ -10,6 +10,8 @@ const rename = require('gulp-rename');
 const clean = require('gulp-clean');
 const autoprefixer = require('gulp-autoprefixer');
 const imagemin = require('gulp-imagemin');
+const notify = require('gulp-notify');
+const plumber = require('gulp-plumber');
 
 
 
@@ -24,6 +26,11 @@ gulp.task('clean', function () {
 
 gulp.task('styles', function () {
     return gulp.src('src/scss/style.scss')
+        .pipe(notify('Notify: FOUND ERROR in file: style.scss'))
+        .pipe(plumber({errorHandler: notify.onError("Plumber: FOUND ERROR in file: style.scss")}))
+        .pipe(through(function () {
+            this.emit("error", new Error("Something happend: Plumber found ERROR"))
+        }))
         .pipe(browserSync.reload({stream: true}))
         .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
         .pipe(autoprefixer({
@@ -42,6 +49,11 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function () {
     return gulp.src('src/js/sections/**/*.js')
+        .pipe(notify('Notify: FOUND ERROR in SCRIPT files in forlder: src/js/sections/**/*.js'))
+        .pipe(plumber({errorHandler: notify.onError("Plumber: FOUND ERROR in SCRIPT files in forlder: src/js/sections/**/*.js")}))
+        .pipe(through(function () {
+            this.emit("error", new Error("Something happend: Plumber found ERROR"))
+        }))
         .pipe(browserSync.reload({stream: true}))
         .pipe(concat('index.js'))
         .pipe(gulp.dest('src/js/'))
@@ -52,6 +64,11 @@ gulp.task('scripts', function () {
 
 gulp.task('script-libs', function () {
     return gulp.src('src/js/libs/**/*.js')
+        .pipe(notify('Notify: FOUND ERROR in SCRIPT files in forlder: src/js/libs/**/*.js'))
+        .pipe(plumber({errorHandler: notify.onError("Plumber: FOUND ERROR in SCRIPT files in forlder: src/js/lips/**/*.js")}))
+        .pipe(through(function () {
+            this.emit("error", new Error("Something happend: Plumber found ERROR"))
+        }))
         .pipe(browserSync.reload({stream: true}))
         .pipe(concat('script-libs.min.js'))
         .pipe(uglify())
@@ -66,6 +83,7 @@ gulp.task('image-min', function () {
         .pipe(imagemin())
         .pipe(gulp.dest('dist/img/'))
 });
+
 
 
 /*********** Browser Sync **********/
