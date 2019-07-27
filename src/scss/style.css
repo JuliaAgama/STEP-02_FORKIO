@@ -101,7 +101,7 @@ body {
   margin-bottom: 100px;
   width: 100%;
   position: relative;
-  background: url("/dist/img/background-header.png") no-repeat;
+  background: url("../img/background-header.png") no-repeat;
   background-position: top center;
   background-size: 1200px auto;
 }
@@ -934,7 +934,7 @@ body {
 
 /********** OVERVIEW SECTION  **********/
 /* Olexander Shaporda */
-.overview-section p {
+.overview p {
   background-color: #00ff00;
   color: red;
   font-size: 12px;
@@ -949,7 +949,7 @@ body {
   width: 100%;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  background: #4b3b4e url("/dist/img/background-testimonials.png") no-repeat;
+  background: #4b3b4e url("../img/background-testimonials.png") no-repeat;
   background-position: top center;
   background-size: 1400px auto;
   padding: 50px 30px;
