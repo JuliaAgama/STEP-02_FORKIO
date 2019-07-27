@@ -1,5 +1,6 @@
-;// _testimonials-section.scss
+;
 
+// _testimonials-section.scss
 // $brand-color: #8d81ac;
 // @function size-vw($px, $base-width) {
 //     @return $px/$base-width*100vw
@@ -13,7 +14,7 @@
     margin-bottom: 100px;
     width: 100%;
     box-sizing: border-box;
-    background: #4b3b4e url('/dist/img/background-testimonials.png') no-repeat;
+    background: #4b3b4e url('../img/background-testimonials.png') no-repeat;
     background-position: top center;
     background-size: 1400px auto;
     padding: 50px 30px; // by brief 61px 20px
