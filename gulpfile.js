@@ -10,9 +10,21 @@ const rename = require('gulp-rename');
 const clean = require('gulp-clean');
 const autoprefixer = require('gulp-autoprefixer');
 const imagemin = require('gulp-imagemin');
-// const notify = require('gulp-notify');
+
+const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 
+
+/*********** ERRORS NOTIFYING function **********/
+
+const onError = function (err) {
+    console.log('...OOOOOOPSSSS...');
+    notify.onError({
+        title: 'NOTIFY message for STUPID: Error in plugin: '+ err.plugin + '. CHECK IT!!\n',
+        message: err.message
+    })(err);
+    this.emit('end');
+}
 
 
 /*********** Dist Directory Clean **********/
@@ -26,8 +38,11 @@ gulp.task('clean', function () {
 
 gulp.task('styles', function () {
     return gulp.src('src/scss/style.scss')
-    .pipe(plumber())
-    .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
+    .pipe(plumber({
+        errorHandler: onError
+    }))
+    .pipe(sass({outputStyle: 'expanded'}))
+    // .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
     .pipe(autoprefixer({
         overrideBrowserslist: ['> 0.1%'],
         cascade: false
@@ -47,7 +62,9 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function () {
     return gulp.src('src/js/sections/**/*.js')
-        .pipe(plumber())
+        .pipe(plumber({
+            errorHandler: onError
+        }))
         .pipe(concat('script.js'))
         .pipe(gulp.dest('src/js/'))
         .pipe(uglify({
@@ -60,6 +77,9 @@ gulp.task('scripts', function () {
 
 gulp.task('script-libs', function () {
     return gulp.src('src/js/libs/**/*.js')
+        .pipe(plumber({
+            errorHandler: onError
+        }))
         .pipe(concat('script-libs.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist/js/'))
