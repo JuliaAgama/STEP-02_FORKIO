@@ -15,3 +15,15 @@ $.fn.slowScrollTo = function(speed) {
 };
 
 $('.top-menu__item').on('click', function(event) {$(this).slowScrollTo(1000)});
+
+;
+/********** OVERVIEW SECTION **********/
+
+
+;
+/********** PRICING SECTION **********/
+
+
+;
+/********** TESTIMONIALS SECTION **********/
+

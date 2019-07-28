@@ -11,7 +11,7 @@ const clean = require('gulp-clean');
 const autoprefixer = require('gulp-autoprefixer');
 const imagemin = require('gulp-imagemin');
 // const notify = require('gulp-notify');
-// const plumber = require('gulp-plumber');
+const plumber = require('gulp-plumber');
 
 
 
@@ -26,6 +26,7 @@ gulp.task('clean', function () {
 
 gulp.task('styles', function () {
     return gulp.src('src/scss/style.scss')
+    .pipe(plumber())
     .pipe(sass({outputStyle: 'expanded'}).on('error', sass.logError))
     .pipe(autoprefixer({
         overrideBrowserslist: ['> 0.1%'],
@@ -46,7 +47,8 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function () {
     return gulp.src('src/js/sections/**/*.js')
-        .pipe(concat('index.js'))
+        .pipe(plumber())
+        .pipe(concat('script.js'))
         .pipe(gulp.dest('src/js/'))
         .pipe(uglify({
             toplevel: true
@@ -91,9 +93,10 @@ gulp.task('browser-sync', function () {
 
 gulp.task('watch', function () {
     gulp.watch('src/scss/**/*.scss', gulp.parallel('styles'));
-    gulp.watch('src/js/**/*.js', gulp.parallel('scripts', 'script-libs'));
+    gulp.watch('src/js/sections/*.js', gulp.parallel('scripts'));
+    gulp.watch('src/js/libs/*.js', gulp.parallel('script-libs'));
     gulp.watch('./*.html').on('change', browserSync.reload);
-    gulp.watch('src/img/**/*.+(jpg|png|jpeg)', gulp.parallel('image-min'));
+    gulp.watch('src/img/**/*.+(jpg|png|jpeg|svg)', gulp.parallel('image-min'));
 });
 
 
