@@ -98,7 +98,6 @@ body {
 /********** HEADER  **********/
 /* Julia Verchyonova */
 .header {
-  margin-bottom: 100px;
   width: 100%;
   position: relative;
   background: url("../img/background-header.png") no-repeat;
@@ -880,11 +879,203 @@ body {
 
 /********** OVERVIEW SECTION  **********/
 /* Olexander Shaporda */
-.overview p {
-  background-color: #00ff00;
-  color: red;
+.overview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: center;
+  padding-top: 121px;
+}
+
+.description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.description__header {
+  color: #635c73;
+  font-weight: 700;
+  padding: 0 43px 23px 41px;
+  text-transform: uppercase;
+}
+
+@media only screen and (min-width: 321px) {
+  .description__header {
+    font-size: 5.9375vw;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .description__header {
+    font-size: 3.90625vw;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .description__header {
+    font-size: 3.25vw;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .description__header {
+    font-size: 39px;
+  }
+}
+
+.description__text {
+  margin: 0 auto;
+  font-size: 10px;
+  font-family: 'Lato', 'courier-std', sans-serif;
+  padding: 0 30px 34px 24px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 321px) {
+  .description__text {
+    font-size: 3.125vw;
+    width: 83.125vw;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .description__text {
+    font-size: 1.95312vw;
+    width: 87.10938vw;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .description__text {
+    font-size: 1.25vw;
+    width: 76.08333vw;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .description__text {
+    font-size: 15px;
+  }
+}
+
+.description__icons-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  padding: 0 31px 88px 37px;
+}
+
+.description__icons-block__btn-counter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding: 0 13px 20px 13px;
+}
+
+.description__icons-block__btn-counter__icon-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  font-weight: 700;
+  background-color: #f9f9f9;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #d5d5d5;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.description__icons-block__btn-counter__numbers {
+  line-height: 16px;
+  vertical-align: center;
+  font-size: 0.4em;
+  font-weight: 700;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 1px solid #d5d5d5;
+  border-left: none;
+  padding: 2px 5px;
+}
+
+.advantages__ide-img {
+  overflow: hidden;
+}
+
+.advantages {
+  background-color: #fafafa;
+}
+
+.advantages-header {
+  color: #8d81ac;
+  margin: 34px 46px;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.advantages-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.advantages-block__img {
+  padding: 30px 0;
+  margin: 0 auto;
+}
+
+.advantages-block__subheader {
   font-size: 12px;
-  align-content: center;
+.advantages-block__text {
+  color: #c0c4c9;
+  font-size: 10px;
+  padding: 20px 25px 37px 25px;
+  text-align: center;
+}
+
+.advantages__ide-img {
+  overflow: hidden;
+
 }
 
 /********** TESTIMONIALS SECTION  **********/
