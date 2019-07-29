@@ -11,9 +11,9 @@ Julia Verchyonova & Oleksandr Shaporda
 <br></br>
 **Tasks:**
 <br></br>
-Gulp setup: both.
-Sections #1 and #3 -- Julia Verchyonova
-Sections #2 and #4 -- Oleksandr Shaporda
+* Gulp setup: both.
+* Sections #1 and #3 -- Julia Verchyonova
+* Sections #2 and #4 -- Oleksandr Shaporda
 <br></br>
 **Web Preview link:**
 https://juliaagama.github.io/STEP_02_FORKIO/
