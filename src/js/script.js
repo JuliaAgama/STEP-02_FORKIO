@@ -21,9 +21,9 @@ $('.top-menu__item').on('click', function(event) {$(this).slowScrollTo(1000)});
 
 
 ;
-/********** PRICING SECTION **********/
+/********** TESTIMONIALS SECTION **********/
 
 
 ;
-/********** TESTIMONIALS SECTION **********/
+/********** PRICING SECTION **********/
 
