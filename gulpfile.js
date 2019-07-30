@@ -59,9 +59,15 @@ gulp.task('styles', function () {
 });
 
 /*********** SCRIPTS PROCESSING **********/
+const jsFiles =[
+    'src/js/sections/header.js',
+    'src/js/sections/overview-section.js',
+    'src/js/sections/testimonials-section.js',
+    'src/js/sections/pricing-section.js'
+];
 
 gulp.task('scripts', function () {
-    return gulp.src('src/js/sections/**/*.js')
+    return gulp.src(jsFiles)
         .pipe(plumber({
             errorHandler: onError
         }))
