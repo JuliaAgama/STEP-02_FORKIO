@@ -38,7 +38,7 @@
   text-align: center;
 
   @media only screen and (min-width: 321px) {
-    font-size: size-vw(25gpx, 320px);
+    font-size: size-vw(25px, 320px);
   }
   @media only screen and (min-width: 481px) {
     font-size: size-vw(30px, 768px);
@@ -139,6 +139,14 @@
   border: 1px solid #ffffff;
   width: 160px;
   height: 42px;
+
+  &:hover {
+    @media only screen and (min-width: 993px) {
+      background-color: #d0cbd0;
+      color: #7f6d78;
+      font-weight: 700;
+    }
+  }
 }
 
 .subscription-block-highlighted {
@@ -219,4 +227,12 @@
   border: 1px solid #ffffff;
   width: 190px;
   height: 52px;
+
+  &:hover {
+    @media only screen and (min-width: 993px) {
+      background-color: #d0cbd0;
+      color: #7f6d78;
+      font-weight: 700;
+    }
+  }
 }

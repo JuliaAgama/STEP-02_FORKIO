@@ -880,14 +880,9 @@ body {
 
 /********** OVERVIEW SECTION  **********/
 /* Olexander Shaporda */
-.overview {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  flex-direction: column;
-  text-align: center;
+.overview-section {
   padding-top: 121px;
+  overflow: hidden;
 }
 
 .description {
@@ -896,10 +891,12 @@ body {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   flex-direction: column;
+  text-align: center;
 }
 
 .description__header {
   color: #635c73;
+  font-size: 19px;
   font-weight: 700;
   padding: 0 43px 23px 41px;
   text-transform: uppercase;
@@ -1015,12 +1012,24 @@ body {
   padding: 2px 5px;
 }
 
-.advantages__ide-img {
-  overflow: hidden;
-}
-
 .advantages {
   background-color: #fafafa;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  text-align: center;
+}
+
+@media only screen and (min-width: 993px) {
+  .advantages {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+    flex-direction: row-reverse;
+    -webkit-box-align: center;
+    align-items: center;
+  }
 }
 
 .advantages-header {
@@ -1030,41 +1039,126 @@ body {
   font-weight: 700;
 }
 
+@media only screen and (min-width: 321px) {
+  .advantages-header {
+    font-size: 7.1875vw;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .advantages-header {
+    font-size: 3.90625vw;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .advantages-header {
+    font-size: 2.91667vw;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .advantages-header {
+    font-size: 35px;
+  }
+}
+
 .advantages-block {
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   flex-direction: column;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
+}
+
+@media only screen and (min-width: 481px) {
+  .advantages-block {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+  }
 }
 
 .advantages-block__img {
-  padding: 30px 0;
+  padding: 0 30px;
   margin: 0 auto;
 }
 
-.advantages-block__subheader {
+.advantages-block__content-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  padding: 25px;
+}
+
+@media only screen and (min-width: 481px) {
+  .advantages-block__content-container {
+    padding: 30px 37px 0 0;
+    text-align: left;
+    width: 65%;
+  }
+}
+
+.advantages-block__content-container__subheader {
   font-size: 12px;
-  margin: 0 auto;
 }
 
-.advantages-block__text {
+.advantages-block__content-container__text {
   color: #c0c4c9;
   font-size: 10px;
   padding: 20px 25px 37px 25px;
-  text-align: center;
 }
 
-.advantages__ide-img {
-  overflow: hidden;
+@media only screen and (min-width: 481px) {
+  .advantages-block__content-container__text {
+    padding-left: 0;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .advantages__ide-img--mobile {
+    display: none;
+  }
+}
+
+.advantages__ide-img--pc {
+  display: none;
+}
+
+@media only screen and (min-width: 993px) {
+  .advantages__ide-img--pc {
+    display: -webkit-box;
+    display: flex;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .advantages__header-image--pc {
+    width: 45%;
+    overflow: hidden;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    -webkit-box-align: start;
+    align-items: flex-start;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .advantages-block-container {
+    width: 45%;
+  }
 }
 
 /********** TESTIMONIALS SECTION  **********/
 /* Julia Verchyonova */
 .testimonials-section {
-  margin-bottom: 100px;
   width: 100%;
   box-sizing: border-box;
   background: #4b3b4e url("../img/background-testimonials.png") no-repeat;
@@ -1313,3 +1407,273 @@ body {
 
 /********** PRICING SECTION  **********/
 /* Olexander Shaporda */
+.pricing-section {
+  padding: 73px 0 93px 0;
+  background: #4b3b4e url("../img/background-subscription.png") no-repeat;
+}
+
+.subscription {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+@media only screen and (min-width: 481px) {
+  .subscription {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-pack: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .subscription {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+}
+
+.pricing-section__header {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 71px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 321px) {
+  .pricing-section__header {
+    font-size: 7.8125vw;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .pricing-section__header {
+    font-size: 3.90625vw;
+  }
+}
+
+@media only screen and (min-width: 993px) {
+  .pricing-section__header {
+    font-size: 2.91667vw;
+  }
+}
+
+@media only screen and (min-width: 1201px) {
+  .pricing-section__header {
+    font-size: 35px;
+  }
+}
+
+.subscription-block {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  text-align: center;
+  width: 257px;
+  height: 457px;
+  background-color: #5f5161;
+  opacity: 0.8;
+  color: #ffffff;
+}
+
+@media only screen and (max-width: 480px) {
+  .subscription-block {
+    margin-bottom: 14px;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .subscription-block {
+    margin: 20px;
+  }
+}
+
+.subscription-block__header {
+  height: 97px;
+  background-color: #685b6a;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.subscription-block__bottom-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-content: space-around;
+  height: 360px;
+}
+
+.subscription-block__price {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.subscription-block__period {
+  display: inline-block;
+  font-size: 12px;
+  color: #7c707e;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.subscription-block__period::after {
+  content: '';
+  width: 60px;
+  border-bottom: solid 5px #8d81ac;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+}
+
+.subscription-block__benefits {
+  font-size: 12px;
+}
+
+.subscription-block__button {
+  background-color: #776b79;
+  border-radius: 25px;
+  color: #ffffff;
+  text-transform: uppercase;
+  border: 1px solid #ffffff;
+  width: 160px;
+  height: 42px;
+}
+
+@media only screen and (min-width: 993px) {
+  .subscription-block__button:hover {
+    background-color: #d0cbd0;
+    color: #7f6d78;
+    font-weight: 700;
+  }
+}
+
+.subscription-block-highlighted {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  text-align: center;
+  width: 299px;
+  height: 560px;
+  color: #ffffff;
+  background-color: #413344;
+  opacity: 0.8;
+}
+
+@media only screen and (max-width: 480px) {
+  .subscription-block-highlighted {
+    margin-bottom: 14px;
+  }
+}
+
+@media only screen and (min-width: 481px) {
+  .subscription-block-highlighted {
+    margin-top: 20px;
+  }
+}
+
+.subscription-block-highlighted__header {
+  background-color: #3a2d3d;
+  font-size: 20px;
+  text-transform: uppercase;
+  height: 111px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.subscription-block-highlighted__bottom-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-content: space-around;
+  height: 449px;
+}
+
+.subscription-block-highlighted__price {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.subscription-block-highlighted__period {
+  display: inline-block;
+  font-size: 14px;
+  color: #7c707e;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.subscription-block-highlighted__period::after {
+  content: '';
+  width: 60px;
+  border-bottom: solid 5px #8d81ac;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+}
+
+.subscription-block-highlighted__benefits {
+  font-size: 14px;
+}
+
+.subscription-block-highlighted__button {
+  background-color: #5d5160;
+  border-radius: 25px;
+  color: #ffffff;
+  text-transform: uppercase;
+  border: 1px solid #ffffff;
+  width: 190px;
+  height: 52px;
+}
+
+@media only screen and (min-width: 993px) {
+  .subscription-block-highlighted__button:hover {
+    background-color: #d0cbd0;
+    color: #7f6d78;
+    font-weight: 700;
+  }
+}
