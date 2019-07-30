@@ -1,3 +1,222 @@
-;// _pricing-section.scss
+; // _pricing-section.scss
 
 
+.pricing-section {
+  padding: 73px 0 93px 0;
+  background: #4b3b4e url('../img/background-subscription.png') no-repeat;
+}
+
+.subscription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media only screen and (min-width: 481px) {
+    flex-direction: row;
+    justify-content: center;
+    //align-items: center;
+    flex-wrap: wrap;
+  }
+
+  @media only screen and (min-width: 993px) {
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+}
+
+.pricing-section__header {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 71px;
+  text-align: center;
+
+  @media only screen and (min-width: 321px) {
+    font-size: size-vw(25gpx, 320px);
+  }
+  @media only screen and (min-width: 481px) {
+    font-size: size-vw(30px, 768px);
+  }
+  @media only screen and (min-width: 993px) {
+    font-size: size-vw(35px, 1200px);
+  }
+  @media only screen and (min-width: 1201px) {
+    font-size: 35px;
+  }
+
+}
+
+.subscription-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  width: 257px;
+  height: 457px;
+  background-color: #5f5161;
+  opacity: 0.8;
+  color: #ffffff;
+  //margin: 14px 30px 0 30px;
+
+  @media only screen and (max-width:480px) {
+  margin-bottom: 14px;
+}
+
+  @media only screen and (min-width: 481px) {
+    margin: 20px;
+    //flex-basis: 50%;
+    //width: 35%;
+  }
+
+  @media only screen and (min-width: 993px) {
+    //margin: 20px;
+    //flex-basis: 10%;
+    //min-width: 100%;
+    //flex-basis: 100%;
+  }
+}
+
+.subscription-block__header {
+  height: 97px;
+  background-color: #685b6a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.subscription-block__bottom-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 360px;
+}
+
+.subscription-block__price {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.subscription-block__period {
+  display: inline-block;
+  font-size: 12px;
+  color: #7c707e;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.subscription-block__period::after {
+  content: '';
+  width: 60px;
+  border-bottom: solid 5px #8d81ac;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+}
+
+.subscription-block__benefits {
+  font-size: 12px;
+}
+
+.subscription-block__benefits__text {
+  //padding: 5px;
+}
+
+.subscription-block__button {
+  background-color: #776b79;
+  border-radius: 25px;
+  color: #ffffff;
+  text-transform: uppercase;
+  border: 1px solid #ffffff;
+  width: 160px;
+  height: 42px;
+}
+
+.subscription-block-highlighted {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  width: 299px;
+  height: 560px;
+  color: #ffffff;
+  background-color: #413344;
+  opacity: 0.8;
+
+  @media only screen and (max-width:480px) {
+    margin-bottom: 14px;
+  }
+  @media only screen and (min-width: 481px) {
+    //margin: 20px;
+    margin-top: 20px
+    //flex-basis: 50%;
+  }
+
+}
+
+.subscription-block-highlighted__header {
+  background-color: #3a2d3d;
+  font-size: 20px;
+  text-transform: uppercase;
+  height: 111px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.subscription-block-highlighted__bottom-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 449px;
+}
+
+.subscription-block-highlighted__price {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.subscription-block-highlighted__period {
+  display: inline-block;
+  font-size: 14px;
+  color: #7c707e;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.subscription-block-highlighted__period::after {
+  content: '';
+  width: 60px;
+  border-bottom: solid 5px #8d81ac;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+}
+
+.subscription-block-highlighted__benefits {
+  font-size: 14px;
+}
+
+.subscription-block-highlighted__benefits__text {
+  //padding: 5px;
+}
+
+.subscription-block-highlighted__button {
+  background-color: #5d5160;
+  border-radius: 25px;
+  color: #ffffff;
+  text-transform: uppercase;
+  border: 1px solid #ffffff;
+  width: 190px;
+  height: 52px;
+}
