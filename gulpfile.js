@@ -14,6 +14,8 @@ const imagemin = require('gulp-imagemin');
 const notify = require('gulp-notify');
 const plumber = require('gulp-plumber');
 
+const webpackStream = require('webpack-stream');
+
 
 /*********** ERRORS NOTIFYING function **********/
 
@@ -59,6 +61,7 @@ gulp.task('styles', function () {
 });
 
 /*********** SCRIPTS PROCESSING **********/
+
 const jsFiles =[
     'src/js/sections/header.js',
     'src/js/sections/overview-section.js',
@@ -66,20 +69,61 @@ const jsFiles =[
     'src/js/sections/pricing-section.js'
 ];
 
-gulp.task('scripts', function () {
+gulp.task('scripts-src', function () {
     return gulp.src(jsFiles)
         .pipe(plumber({
             errorHandler: onError
         }))
         .pipe(concat('script.js'))
         .pipe(gulp.dest('src/js/'))
-        .pipe(uglify({
-            toplevel: true
-        }))
-        .pipe(rename('script.min.js'))
+        .pipe(browserSync.reload({stream: true}))
+});
+
+
+let webpackConfig = {
+    output: {
+        filename: 'script.min.js'
+    },
+    module: {
+        rules: [
+          {
+            test: /\.m?js$/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: ['@babel/preset-env']
+              }
+            }
+          }
+        ]
+      }
+
+};
+
+
+gulp.task('scripts', function () {
+    return gulp.src('src/js/script.js')
+        .pipe(webpackStream(webpackConfig))
+        // .pipe(rename('script.min.js'))
         .pipe(gulp.dest('dist/js/'))
         .pipe(browserSync.reload({stream: true}))
 });
+
+// gulp.task('scripts', function () {
+//     return gulp.src(jsFiles)
+//         .pipe(plumber({
+//             errorHandler: onError
+//         }))
+//         .pipe(concat('script.js'))
+//         .pipe(gulp.dest('src/js/'))
+//         .pipe(uglify({
+//             toplevel: true
+//         }))
+//         .pipe(rename('script.min.js'))
+//         .pipe(gulp.dest('dist/js/'))
+//         .pipe(browserSync.reload({stream: true}))
+// });
 
 gulp.task('script-libs', function () {
     return gulp.src('src/js/libs/**/*.js')
@@ -119,7 +163,8 @@ gulp.task('browser-sync', function () {
 
 gulp.task('watch', function () {
     gulp.watch('src/scss/**/*.scss', gulp.parallel('styles'));
-    gulp.watch('src/js/sections/*.js', gulp.parallel('scripts'));
+    gulp.watch('src/js/sections/*.js', gulp.series('scripts-src', 'scripts'));
+    // gulp.watch('src/js/sections/*.js', gulp.parallel('scripts'));
     gulp.watch('src/js/libs/*.js', gulp.parallel('script-libs'));
     gulp.watch('./*.html').on('change', browserSync.reload);
     gulp.watch('src/img/**/*.+(jpg|png|jpeg|svg)', gulp.parallel('image-min'));
@@ -128,7 +173,7 @@ gulp.task('watch', function () {
 
 /*********** Main Tasks **********/
 
-gulp.task('build', gulp.series('clean',
+gulp.task('build', gulp.series('clean', 'scripts-src',
                     gulp.parallel('styles', 'scripts', 'script-libs', 'image-min')));
 
 gulp.task('dev', gulp.parallel('browser-sync', 'watch'));

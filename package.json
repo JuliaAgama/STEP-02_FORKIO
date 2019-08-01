@@ -20,6 +20,10 @@
   },
   "homepage": "https://github.com/JuliaAgama/STEP_02_FORKIO#readme",
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-loader": "^8.0.6",
     "browser-sync": "^2.26.7",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^6.1.0",
@@ -35,7 +39,11 @@
     "gulp-sass": "^4.0.2",
     "gulp-uglify": "^3.0.2",
     "webpack": "^4.38.0",
-    "webpack-cli": "^3.3.6"
+    "webpack-cli": "^3.3.6",
+    "webpack-stream": "^5.2.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "jquery": "^3.4.1"
+  }
 }
