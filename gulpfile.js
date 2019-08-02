@@ -18,8 +18,9 @@ const webpackStream = require('webpack-stream');
 
 const gulpIf = require('gulp-if'); // to choose options of doning\not-doing some pipes;
 // e.g. not minify\uglify in PRODUCTION mode (if isProd = true)
-// let isDev = false;
-let isDev = true; 
+
+// let isDev = false; //choose PRODUCTION  mode for WEBPACK
+let isDev = true; //choose DEVELOPMENT mode for WEBPACK
 let isProd = !isDev;
 
 /*********** ERRORS NOTIFYING function **********/
@@ -87,7 +88,7 @@ gulp.task('scripts-src', function () {
 
 let webpackConfig = {
     output: {
-        filename: 'script.min.js'
+        filename: isDev ? 'script.js' : 'script.min.js' //create full file name in DEVELOPMENT mode and min.file name in BUILD MODE
     },
     module: {
         rules: [
@@ -104,8 +105,9 @@ let webpackConfig = {
         ]
       },
       mode: isDev ? 'development' : 'production',
-      devtool: isDev ? 'eval-source-map' : none // creates sourcemap only for DEVELOPMENT mode, https://webpack.js.org/configuration/devtool/
+      devtool: isDev ? 'eval-sourcemap' : 'source-map' // creates sourcemaps:y for DEVELOPMENT mode - included, for PRODUCTION mode - separatly, https://webpack.js.org/configuration/devtool/
 };
+
 
 
 gulp.task('scripts', function () {
