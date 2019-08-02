@@ -16,6 +16,11 @@ const plumber = require('gulp-plumber');
 
 const webpackStream = require('webpack-stream');
 
+const gulpIf = require('gulp-if'); // to choose options of doning\not-doing some pipes;
+// e.g. not minify\uglify in PRODUCTION mode (if isProd = true)
+// let isDev = false;
+let isDev = true; 
+let isProd = !isDev;
 
 /*********** ERRORS NOTIFYING function **********/
 
@@ -49,13 +54,12 @@ gulp.task('styles', function () {
         overrideBrowserslist: ['> 0.1%'],
         cascade: false
     }))
-    .pipe(gulp.dest('src/scss/'))
-    .pipe(cleanCss({
+    .pipe(gulpIf(isProd, cleanCss({ //minifies only in PRODUCTION mode
         level: 2
-    }))
-    .pipe(rename({
+    })))
+    .pipe(gulpIf(isProd, rename({ //renames only in PRODUCTION mode
             suffix: '.min'
-        }))
+        })))
         .pipe(gulp.dest('dist/css/'))
         .pipe(browserSync.reload({stream: true}))
 });
@@ -80,6 +84,7 @@ gulp.task('scripts-src', function () {
 });
 
 
+
 let webpackConfig = {
     output: {
         filename: 'script.min.js'
@@ -97,8 +102,9 @@ let webpackConfig = {
             }
           }
         ]
-      }
-
+      },
+      mode: isDev ? 'development' : 'production',
+      devtool: isDev ? 'eval-source-map' : none // creates sourcemap only for DEVELOPMENT mode, https://webpack.js.org/configuration/devtool/
 };
 
 
@@ -110,20 +116,6 @@ gulp.task('scripts', function () {
         .pipe(browserSync.reload({stream: true}))
 });
 
-// gulp.task('scripts', function () {
-//     return gulp.src(jsFiles)
-//         .pipe(plumber({
-//             errorHandler: onError
-//         }))
-//         .pipe(concat('script.js'))
-//         .pipe(gulp.dest('src/js/'))
-//         .pipe(uglify({
-//             toplevel: true
-//         }))
-//         .pipe(rename('script.min.js'))
-//         .pipe(gulp.dest('dist/js/'))
-//         .pipe(browserSync.reload({stream: true}))
-// });
 
 gulp.task('script-libs', function () {
     return gulp.src('src/js/libs/**/*.js')
@@ -164,7 +156,6 @@ gulp.task('browser-sync', function () {
 gulp.task('watch', function () {
     gulp.watch('src/scss/**/*.scss', gulp.parallel('styles'));
     gulp.watch('src/js/sections/*.js', gulp.series('scripts-src', 'scripts'));
-    // gulp.watch('src/js/sections/*.js', gulp.parallel('scripts'));
     gulp.watch('src/js/libs/*.js', gulp.parallel('script-libs'));
     gulp.watch('./*.html').on('change', browserSync.reload);
     gulp.watch('src/img/**/*.+(jpg|png|jpeg|svg)', gulp.parallel('image-min'));
@@ -178,4 +169,4 @@ gulp.task('build', gulp.series('clean', 'scripts-src',
 
 gulp.task('dev', gulp.parallel('browser-sync', 'watch'));
 
-
+gulp.task('default', gulp.series('build', 'dev'));
