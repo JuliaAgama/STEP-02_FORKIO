@@ -16,4 +16,4 @@ Julia Verchyonova & Oleksandr Shaporda
 * Sections #2 and #4 -- Oleksandr Shaporda
 <br></br>
 **Web Preview link:**
-https://juliaagama.github.io/STEP_02_FORKIO/
+https://juliaagama.github.io/STEP-02_FORKIO/
